@@ -3,13 +3,12 @@ kind: Service
 metadata:
   name: ssh
   namespace: default
-spec:
-  type: LoadBalancer
-  loadBalancerIP: 104.199.75.69
-  selector:
+  labels:
     app: ssh
+spec:
   ports:
-    # the port that this service should serve on
   - port: 22
     protocol: TCP
     targetPort: 22
+  selector:
+    app: ssh

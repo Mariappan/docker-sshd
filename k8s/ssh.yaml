@@ -1,9 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ssh
   namespace: default
 spec:
+  selector:
+    matchLabels:
+      app: ssh
   replicas: 1
   template:
     metadata:
@@ -12,7 +15,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: ruediste/sshd:1.0
+        image: rmariappan/sshd:0.1
         imagePullPolicy: Always
         # command:
         #   - /usr/sbin/sshd
