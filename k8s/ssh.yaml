@@ -19,7 +19,9 @@ spec:
         imagePullPolicy: Always
         # command:
         #   - /usr/sbin/sshd
-        #   - -De
+        #   - -D
+        #   - -E
+        #   - /tmp/ssh.log
         ports:
         - containerPort: 22
       #  readinessProbe:
@@ -31,10 +33,11 @@ spec:
           # failureThreshold: 5
         env:
         volumeMounts:
-        - mountPath: /root/.ssh/
-          name: ssh-dir
-        - mountPath: /etc/ssh/hostKeys/
-          name: ssh-host-keys
+        - name: ssh-dir
+          mountPath: /root/.ssh/authorized_keys
+          subPath: authorized_keys
+        - name: ssh-host-keys
+          mountPath: /etc/ssh/hostKeys
         resources:
           limits:
             cpu: 50m
