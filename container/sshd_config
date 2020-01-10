@@ -6,7 +6,7 @@ HostKey /etc/ssh/hostKeys/ssh_host_rsa_key
 
 AuthorizedKeysFile	.ssh/authorized_keys
 
-PermitRootLogin yes
+PermitRootLogin no
 PasswordAuthentication no
 
 TCPKeepAlive yes

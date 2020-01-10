@@ -34,7 +34,7 @@ spec:
         env:
         volumeMounts:
         - name: ssh-dir
-          mountPath: /root/.ssh/authorized_keys
+          mountPath: /home/span/.ssh/authorized_keys
           subPath: authorized_keys
         - name: ssh-host-keys
           mountPath: /etc/ssh/hostKeys
