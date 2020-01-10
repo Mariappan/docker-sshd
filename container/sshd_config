@@ -1,13 +1,14 @@
 # SSH server keys
-HostKey /etc/ssh/hostKeys/ssh_host_dsa_key
-HostKey /etc/ssh/hostKeys/ssh_host_ecdsa_key
-HostKey /etc/ssh/hostKeys/ssh_host_ed25519_key
-HostKey /etc/ssh/hostKeys/ssh_host_rsa_key
+HostKey /home/span/.ssh/hostKeys/ssh_host_dsa_key
+HostKey /home/span/.ssh/hostKeys/ssh_host_ecdsa_key
+HostKey /home/span/.ssh/hostKeys/ssh_host_ed25519_key
+HostKey /home/span/.ssh/hostKeys/ssh_host_rsa_key
 
 AuthorizedKeysFile	.ssh/authorized_keys
 
 PermitRootLogin no
 PasswordAuthentication no
+UsePrivilegeSeparation no
 
 TCPKeepAlive yes
 ClientAliveInterval 60

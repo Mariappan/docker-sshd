@@ -13,31 +13,30 @@ spec:
       labels:
         app: ssh
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
       - name: master
-        image: rmariappan/sshd:0.1
+        image: rmariappan/sshd:0.3-testuserrun
         imagePullPolicy: Always
-        # command:
-        #   - /usr/sbin/sshd
-        #   - -D
-        #   - -E
-        #   - /tmp/ssh.log
+        command:
+          - /usr/sbin/sshd
+          - -D
+          - -p
+          - "2222"
+          - -E
+          - /tmp/ssh.log
         ports:
-        - containerPort: 22
-      #  readinessProbe:
-          # tcpSocket:
-          #   port: 22
-          # periodSeconds: 10
-          # timeoutSeconds: 5
-          # successThreshold: 2
-          # failureThreshold: 5
+        - containerPort: 2222
         env:
         volumeMounts:
         - name: ssh-dir
           mountPath: /home/span/.ssh/authorized_keys
           subPath: authorized_keys
         - name: ssh-host-keys
-          mountPath: /etc/ssh/hostKeys
+          mountPath: /home/span/.ssh/hostKeys
         resources:
           limits:
             cpu: 50m
